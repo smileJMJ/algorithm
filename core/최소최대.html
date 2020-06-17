@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>최소최대</title>
+</head>
+<body>
+    <script>
+        // 최소값과 최대값
+        /*
+            a.sort()의 한계: 문자열로 변경해서 sort 시킴 (사전식 정렬)
+            Math.max(값1, 값2, ...), Math.min(값1, 값2, ...) 이용
+        * */
+        let a = [10, 20, 30, 1, 2, 3, 5, 9, 11, 80];
+        console.log(Math.max(...a)); // MDN 방법
+
+        // 많이 사용하는 방법이라고 함
+        console.log(Math.max.apply(null, a));
+        console.log(Math.min.apply(null, a));
+
+        // 반복으로 최대/최소 찾기
+        let max = a[0];
+        let min = a[0];
+        for(let v of a) {
+            if(v > max) max = v;
+            else if(v < min) min = v;
+        }
+        console.log(max, min);
+    </script>
+</body>
+</html>

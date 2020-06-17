@@ -8,7 +8,32 @@
 <body>
     <script>
         // 재귀 사례 - 피보나치
+        /*
+        *   1 1 2 3 5 8 13 21 34 ...
+        * */
 
+        // 반복문
+        let a = 1;
+        let b = 1;
+        for(let i = 0; i < 6; i++) {
+            let c = a + b;
+            a = b;
+            b = c;
+        }
+
+        // 재귀함수
+        /*
+            fibo(5)  fibo(4) + fibo(3)
+            fibo(4)  fibo(3) + fibo(2)
+            fibo(3)  fibo(2) + fibo(1)
+            fibo(2)  1
+            fibo(1)  1
+        * */
+        function fibo(n) {
+            if(n === 1 || n === 2) return 1;
+            return fibo(n-1) + fibo(n-2);
+        }
+        console.log(`재귀함수: ${fibo(7)}`);
     </script>
 </body>
 </html>
