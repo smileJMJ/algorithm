@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>01</title>
+</head>
+<body>
+    <script>
+        let data = [
+            '   + -- + - + -   ',
+            '   + --- + - +   ',
+            '   + -- + - + -   ',
+            '   + - + - + - +   '
+        ];
+        let arr = [];
+
+        for(let v of data) {
+            const r = parseInt(v.replace(/\ /g, '').replace(/\+/g, 1).replace(/\-/g, 0), 2);
+            arr.push(String.fromCharCode(r));
+        }
+        console.log(arr.join(''))
+    </script>
+</body>
+</html>

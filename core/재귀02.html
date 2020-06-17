@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>재귀02</title>
+</head>
+<body>
+    <script>
+        // 재귀함수 사례 - 2진수 변환
+        /* 11의 2진수 구하기
+        *      11
+        *   2   5   1
+        *   2   2   1
+        *   2   1   0
+        * */
+
+        // 반복문
+        let result = '';
+        let x = 11;
+        while(true) {
+            if(x%2 === 0) result += '0';
+            else result += '1';
+            x = Math.floor(x / 2);
+            if(x <= 1) {
+                result += String(x);
+                break;
+            }
+        }
+        console.log(result.split('').reverse().join('')); // 1101로 출력한 애들을 reverse 시킴
+
+        // 재귀함수
+        let result2 = '';
+        function twoFunc(n) {
+            if(n <= 1) {
+                return String(n);
+            }
+            return twoFunc(Math.floor(n / 2)) + String(n % 2); // 재귀함수가 앞에 위치해야 1011로 출력됨.
+        }
+        console.log(`재귀함수: ${twoFunc(11)}`);
+
+    </script>
+</body>
+</html>

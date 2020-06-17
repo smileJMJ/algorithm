@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>재귀03</title>
+</head>
+<body>
+    <script>
+        // 재귀함수 사례 - 각 자리수의 합
+        // Number보다 parseInt를 많이 씀.
+        /*
+        *   Number는 무조건 숫자로만 이루어진 string이어야 정상적으로 숫자로 리턴함.
+        *   문자열이 껴있으면 NaN으로 처리
+        *
+        *   parseInt는 첫번째 인자에 변환하고 싶은 string을, 두번째 인자에 변환할 진수 표기
+        *   ES3까지는 두번째 인자값 생략하면 8진수로 자동 변환했어서 꼭 넣어줘야했는데,
+        *   ES5부터 10진수로 변환해줌. 단, 모든 브라우저에서 진수가 없을 때 10진수로 변환시켜주는건
+        *   아닐 수 있기 때문에 진수(radix)값을 명시해야 함!
+        *   parseInt는 문자(글자)가 포함된 string이 들어오면 무시하고 숫자들만 리턴함
+        * * */
+
+        let x = '123123';
+        let result = 0;
+
+        // 반복문
+        while(true) {
+            if(x.length == 1) {
+                result += parseInt(x);
+                break;
+            }
+            let y = x.split('');
+            result += parseInt(y.pop(), 10);
+            x = y.join('');
+        }
+
+        // 재귀함수
+        /*
+        *   123123   +0
+        *   12312    +3
+        * */
+        /*function sum(n) { // 내코드
+            if(n.length === 1) return parseInt(n, 10);
+            let arr = n.split('');
+            let number = arr.pop();
+            return sum(arr.join('')) + parseInt(number, 10);
+        }*/
+        function sum(str) {
+            if(str.length === 1) {
+                return parseInt(str, 10);
+            }
+            return sum(str.slice(0, str.length - 1)) + parseInt(str[str.length - 1], 10);
+        }
+        console.log(`재귀함수: ${sum('1231233')}`);
+    </script>
+</body>
+</html>
