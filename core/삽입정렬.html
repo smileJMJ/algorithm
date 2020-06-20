@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>삽입정렬</title>
+</head>
+<body>
+    <script>
+        // 삽입정렬 - a에서 순차적을 빼낸 값이 새로운 배열에서 자신의 위치를 찾아 넣어주는 정렬
+        let a = [5, 10, 66, 77, 54, 32, 11, 15];
+        let aLength = a.length;
+        let newA = [];
+
+        // 정렬된 배열에서 삽입값의 위치 찾는 함수
+        function findIndexInNewA(newArray, value) {
+            for(let i in newArray) {
+                if(value < newArray[i]) return i; // value보다 큰 값을 만나면 그 index에 value 삽입
+            }
+            return newArray.length; // 다 돌았는데도 없으면(제일 크면) 마지막에 삽입
+        }
+
+        for(let i = 0; i<aLength; i++) {
+            const value = a.shift(); // 앞에서부터 값 빼냄
+            const index = findIndexInNewA(newA, value);
+            newA.splice(index, 0, value);
+        }
+        console.log(newA);
+    </script>
+</body>
+</html>

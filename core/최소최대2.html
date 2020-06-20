@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>최소최대2</title>
+</head>
+<body>
+    <script>
+        // 최소값과 최대값
+        let a = [6, 5, 4, 3, 2];
+        const reducerOne = (accumulator, currentValue) => accumulator + currentValue;
+        const reducerTwo = (accumulator, currentValue) => accumulator - currentValue;
+        const reducerThree = (accumulator, currentValue) => accumulator > currentValue ? accumulator : currentValue;
+        const reducerFour = (accumulator, currentValue) => accumulator < currentValue ? accumulator : currentValue;
+
+        console.log(a.reduce(reducerOne)); // reducer는 배열이 각 요소에 대해 주어진 reducer 함수 실행시켜 결과값 반환
+        console.log(a.reduce(reducerTwo));
+        console.log(a.reduce(reducerThree)); // 최대값
+        console.log(a.reduce(reducerFour)); // 최소값
+
+        // reducer
+        /*
+        *   accumulator = 콜백의 이전 반환값 / 콜백의 첫번째 호출
+        *   currentValue = 처리할 현재 요소
+        * */
+    </script>
+</body>
+</html>
