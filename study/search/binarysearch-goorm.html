@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>이진탐색 - 구름</title>
+        <link rel="stylesheet" href="../resource/css/style.css">
+    </head>
+    <body>
+        <div class="wrap">
+            <section id="question">
+                <h1>Binary Search</h1>
+                <div class="_1f4ZWH"><p>Binary Search (이진 탐색)을 통해서 오름차순으로 정렬된 수열 내에 찾고 싶은 수의 존재 유무와 위치를 출력하는 프로그램을 작성하십시오.</p><p><b style="color: rgb(37, 37, 37); font-family: sans-serif; line-height: 22.4px;">이진 탐색 알고리즘</b><span style="color: rgb(37, 37, 37); font-family: sans-serif; line-height: 22.4px;">(binary search algorithm)은 오름차순으로 정렬된 리스트에서 특정한 값의 위치를 찾는&nbsp;알고리즘입니</span><span style="color: rgb(37, 37, 37); font-family: sans-serif; line-height: 22.4px;">다. </span></p><p><span style="color: rgb(37, 37, 37); font-family: sans-serif; line-height: 22.4px;">처음 중간의 값을 임의의 값으로 선택하여, 그 값과 찾고자 하는 값의 크고 작음을 비교하는 방식을 채택하고 있습니다. </span></p><p><span style="color: rgb(37, 37, 37); font-family: sans-serif; line-height: 22.4px;">처음 선택한 중앙값이 만약 찾는 값보다 크면 그 값은 새로운 최고값이 되며, 작으면 그 값은 새로운 최하값이 됩니다. </span></p><p><span style="color: rgb(37, 37, 37); font-family: sans-serif; line-height: 22.4px;">검색 원리상 <u>정렬된 리스트에만 사용할 수 있다는 단점</u>이 있지만, 검색이 반복될 때마다 목표값을 찾을 확률은 두 배가 되므로 <b>속도가 빠르다는 장점</b>이 있습니다.&nbsp;</span><br></p><p><br></p><p><b>입력</b></p><p>첫 줄에 배열의 크기 입력(최대 100)</p><p>두 번째 줄에 수열을 오름차순으로 정렬하여 입력</p><p>마지막 줄에 찾을 수를 입력</p><p><b>출력</b></p><p>해당하는 수가 있다면 그 위치를 출력하고, 없다면 "X"를 출력</p><p><br></p><p><br></p></div>
+                <figure><img src="../resource/img/search/imgBinarySearch.png" alt=""></figure>
+            </section>
+            <section id="answer">
+                <pre>
+// Run by Node.js
+
+const readline = require("readline");
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+const inputData = [];
+
+// 오름차순 정렬
+const sortASC = (arr) => {
+    return arr.sort(function(a, b) { return a - b; })
+};
+
+// 이진탐색
+const binarySearch = (arr, item) => {
+    let low = 0;
+    let high = arr.length - 1;
+    let mid, val;
+    
+    while(low <= high) {
+        mid = Math.floor((low + high) / 2);
+        val = arr[mid];
+        
+        if(val === item) return mid + 1;
+        else if(val < item) low = mid + 1;
+        else high = mid - 1;
+    }
+    return 'X';
+};
+
+rl.on("line", function(line) {
+    inputData.push(line.split(' ').map(v => parseInt(v)));
+}).on("close", function() {
+    const sortAscArr = sortASC(inputData[1]);
+    console.log(binarySearch(sortAscArr, inputData[2][0]));
+    process.exit();
+});
+                </pre>
+            </section>
+        </div>
+    </body>
+</html>
