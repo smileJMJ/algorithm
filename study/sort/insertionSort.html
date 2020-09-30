@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>삽입정렬</title>
+    </head>
+    <body>
+        <script>
+            (function() {
+                let array = [5, 6, 4, 1, 3, 2];
+
+                function insertionSort(arr) {
+                    for(let i = 1; i < arr.length; i++) {
+                        let temp = arr[i];
+                        let leftIdx = i - 1;
+
+                        while(leftIdx >= 0 && (arr[leftIdx] >= temp)) {
+                            arr[leftIdx + 1] = arr[leftIdx]; // 왼쪽에 있던 값을 오른쪽으로 이동 
+                            leftIdx--;
+                        }
+                        // 해당 위치에 도달하여 값 교체해줌
+                        // while문에서 leftIdx--되어있는 상태이므로 실제 위치인 leftIdx에 넣기 위해 index에 +1 해줌
+                        arr[leftIdx + 1] = temp; 
+                    }
+                    console.log(arr);
+                }
+
+                insertionSort(array);
+            })();
+        </script>
+    </body>
+</html>
